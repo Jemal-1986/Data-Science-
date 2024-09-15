@@ -1,0 +1,60 @@
+---
+title: "IRISH DATA"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+# Load packages
+library(plotly)
+library(leaflet)
+```
+
+```{r}
+# Load iris dataset
+data(iris)
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+# Create a scatter plot
+plot <- plot_ly(data = iris, x = ~Sepal.Length,
+                y = ~Petal.Length, 
+                type = "scatter",
+                mode = "markers")
+# Add color and size to markers
+plot <- plot %>% add_markers(color = ~Species,
+                             size = ~Sepal.Width * 2)
+
+# Add labels and title
+plot <- plot %>% layout(xaxis = list(title = "Sepal Length"), 
+                        yaxis = list(title = "Petal Length"), 
+                        title = "Iris Dataset")
+
+# Display the plot
+plot
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
